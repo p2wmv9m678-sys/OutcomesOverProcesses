@@ -7,159 +7,181 @@
 <meta name="description" content="Outcomes Over Processes: Why Some Organizations Thrive Through Change and Others Don't. A book by Sean W. Chambers — MBA, DBA Candidate, U.S. Army Veteran.">
 <style>
 :root {
-  --ink: #0d1117;
-  --ink-2: #131a24;
-  --slate: #1b2531;
-  --paper: #f4f1ea;
-  --paper-dim: #c7c2b6;
-  --muted: #8b93a0;
-  --amber: #c8973f;
-  --amber-pale: #e0b864;
-  --line: rgba(200,151,63,0.22);
-  --nav-h: 72px;
+  --paper: #f7f4ed;
+  --paper-2: #efe9dd;
+  --card: #ffffff;
+  --ink: #18191b;
+  --ink-soft: #3c3f44;
+  --muted: #6b6f76;
+  --accent: #20314f;        /* cover navy: authority, trust */
+  --accent-dark: #15233c;
+  --accent-soft: #e7ecf4;
+  --gold: #c2962f;
+  --line: #e2dccd;
+  --nav-h: 70px;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
-body { background: var(--ink); color: var(--paper); font-family: "Inter", "Helvetica Neue", Arial, sans-serif; line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-.display { font-family: Georgia, "Times New Roman", serif; font-weight: 400; letter-spacing: 0.01em; line-height: 1.12; }
-.eyebrow { font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--amber); font-weight: 600; }
+body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.serif { font-family: var(--serif); }
+.eyebrow { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
 p { max-width: 64ch; }
-a { color: inherit; }
+img { max-width: 100%; display: block; }
 
 /* NAV */
-nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1.5rem,5vw,4rem); background: linear-gradient(to bottom, rgba(13,17,23,0.96) 0%, rgba(13,17,23,0) 100%); transition: background 0.3s, border-color 0.3s; }
-nav.solid { background: rgba(13,17,23,0.97); border-bottom: 1px solid var(--line); }
-.nav-brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
-.monogram { width: 38px; height: 38px; flex-shrink: 0; border: 1.5px solid var(--amber); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-size: 0.82rem; letter-spacing: 0.04em; color: var(--amber-pale); }
-.nav-name { font-family: Georgia, serif; font-size: 1.02rem; letter-spacing: 0.06em; color: var(--paper); }
-.nav-links { display: flex; gap: 2.3rem; list-style: none; align-items: center; }
-.nav-links a { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--paper-dim); text-decoration: none; transition: color 0.2s; }
-.nav-links a:hover { color: var(--amber-pale); }
-.nav-links .nav-cta { border: 1px solid var(--line); padding: 0.5rem 1.1rem; border-radius: 4px; color: var(--paper); }
-.nav-links .nav-cta:hover { background: var(--amber); color: var(--ink); border-color: var(--amber); }
-.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: var(--paper); }
+nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1.25rem,5vw,3.5rem); background: rgba(247,244,237,0); transition: background 0.3s, box-shadow 0.3s, border-color 0.3s; border-bottom: 1px solid transparent; }
+nav.solid { background: rgba(247,244,237,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.nav-brand { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; color: var(--ink); }
+.monogram { width: 36px; height: 36px; border-radius: 7px; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 0.8rem; letter-spacing: 0.02em; }
+.nav-name { font-family: var(--serif); font-size: 1.02rem; letter-spacing: 0.01em; }
+.nav-links { display: flex; gap: 1.9rem; list-style: none; align-items: center; }
+.nav-links a { font-size: 0.78rem; letter-spacing: 0.06em; color: var(--ink-soft); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); }
+.nav-cta { background: var(--accent); color: #fff !important; padding: 0.55rem 1.15rem; border-radius: 6px; font-weight: 600 !important; }
+.nav-cta:hover { background: var(--accent-dark); }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: var(--ink); }
 .nav-toggle svg { width: 26px; height: 26px; }
 
+/* BUTTONS */
+.btn { display: inline-block; padding: 0.9rem 1.9rem; font-size: 0.82rem; letter-spacing: 0.04em; font-weight: 600; text-decoration: none; cursor: pointer; border: none; border-radius: 7px; transition: all 0.2s; font-family: var(--sans); }
+.btn-primary { background: var(--accent); color: #fff; box-shadow: 0 6px 18px rgba(32,49,79,0.22); }
+.btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(32,49,79,0.28); }
+.btn-gold { background: var(--gold); color: #1c1505; box-shadow: 0 6px 18px rgba(194,150,47,0.28); }
+.btn-gold:hover { background: #b1862a; transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.btn-light { background: #fff; color: var(--accent-dark); }
+.btn-light:hover { transform: translateY(-2px); }
+
 /* HERO */
-.hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; background:
-  radial-gradient(ellipse 55% 65% at 75% 35%, rgba(200,151,63,0.12) 0%, transparent 65%),
-  radial-gradient(ellipse 80% 60% at 20% 80%, rgba(27,37,49,0.9) 0%, transparent 55%),
-  linear-gradient(160deg, var(--ink-2) 0%, var(--ink) 70%); }
-.hero-grid { position: relative; z-index: 2; max-width: 1160px; margin: 0 auto; width: 100%; padding: calc(var(--nav-h) + 3rem) clamp(1.5rem,5vw,4rem) 4rem; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem,6vw,5rem); align-items: center; }
-.hero-copy { display: flex; flex-direction: column; gap: 1.6rem; }
-.hero-eyebrow-line { display: flex; align-items: center; gap: 1rem; }
-.hero-eyebrow-line::after { content: ""; flex: 1; height: 1px; background: linear-gradient(to right, var(--amber), transparent); opacity: 0.6; max-width: 120px; }
-.hero-title { font-size: clamp(2.6rem,6.5vw,4.6rem); color: var(--paper); }
-.hero-title span { color: var(--amber-pale); }
-.hero-subtitle { font-size: clamp(0.98rem,1.6vw,1.18rem); color: var(--paper-dim); max-width: 46ch; line-height: 1.7; }
-.hero-tagline { font-family: Georgia, serif; font-style: italic; font-size: clamp(1.02rem,1.8vw,1.25rem); color: var(--amber-pale); max-width: 46ch; line-height: 1.6; border-left: 2px solid var(--amber); padding-left: 1.3rem; }
-.hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.4rem; }
-.btn { display: inline-block; padding: 0.85rem 2rem; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; text-decoration: none; cursor: pointer; border: none; border-radius: 4px; transition: all 0.25s; }
-.btn-primary { background: var(--amber); color: var(--ink); }
-.btn-primary:hover { background: var(--amber-pale); transform: translateY(-2px); }
-.btn-ghost { background: transparent; color: var(--paper); border: 1px solid rgba(244,241,234,0.3); }
-.btn-ghost:hover { border-color: var(--amber); color: var(--amber-pale); }
+.hero { position: relative; padding: calc(var(--nav-h) + clamp(2.5rem,7vw,5rem)) clamp(1.25rem,5vw,3.5rem) clamp(3rem,7vw,5rem); background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%); overflow: hidden; }
+.hero-grid { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(2rem,6vw,5rem); align-items: center; }
+.hero-copy { display: flex; flex-direction: column; gap: 1.5rem; }
+.hero-title { font-size: clamp(2.4rem,5.4vw,4rem); line-height: 1.08; letter-spacing: -0.01em; }
+.hero-title span { color: var(--accent); }
+.hero-sub { font-size: clamp(1.05rem,1.7vw,1.25rem); color: var(--ink-soft); max-width: 46ch; line-height: 1.6; }
+.hero-cta-group { display: flex; gap: 0.9rem; flex-wrap: wrap; align-items: center; margin-top: 0.3rem; }
+.hero-trust { font-size: 0.82rem; color: var(--muted); margin-top: 0.4rem; }
+.hero-trust strong { color: var(--ink-soft); font-weight: 600; }
 
-/* BOOK COVER OBJECT */
-.hero-book { display: flex; justify-content: center; perspective: 1400px; }
-.book { position: relative; width: clamp(220px,26vw,300px); aspect-ratio: 6 / 9; border-radius: 4px 8px 8px 4px; background: linear-gradient(155deg, #16202b 0%, #0f1620 100%); box-shadow: 0 30px 60px rgba(0,0,0,0.55), -2px 0 0 #0a0f15, inset 0 0 0 1px rgba(200,151,63,0.25); transform: rotateY(-16deg) rotateX(3deg); transition: transform 0.5s ease; display: flex; flex-direction: column; padding: 2rem 1.6rem; }
-.book:hover { transform: rotateY(-6deg) rotateX(1deg); }
-.book::before { content: ""; position: absolute; left: 14px; top: 0; bottom: 0; width: 2px; background: rgba(0,0,0,0.4); }
-.book-top { font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--amber); text-align: center; }
-.book-rule { width: 38px; height: 1px; background: var(--amber); opacity: 0.7; margin: 1.1rem auto; }
-.book-title { font-family: Georgia, serif; font-size: clamp(1.5rem,2.6vw,1.95rem); line-height: 1.1; text-align: center; color: var(--paper); margin-top: 0.4rem; }
-.book-title em { color: var(--amber-pale); font-style: normal; }
-.book-sub { font-size: 0.64rem; line-height: 1.5; letter-spacing: 0.04em; color: var(--paper-dim); text-align: center; margin-top: auto; }
-.book-author { font-family: Georgia, serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--paper); text-align: center; margin-top: 1rem; }
+/* BOOK COVER */
+.hero-book { display: flex; justify-content: center; }
+.book-img { width: clamp(240px,28vw,330px); height: auto; border-radius: 3px 9px 9px 3px; box-shadow: 0 26px 55px rgba(20,30,50,0.32), -10px 14px 30px rgba(20,30,50,0.16); transform: rotate(-2deg); transition: transform 0.4s ease; }
+.book-img:hover { transform: rotate(0deg) translateY(-5px); }
 
-/* DIVIDER */
-.divider { display: flex; align-items: center; gap: 1.4rem; margin: 0 auto; max-width: 280px; }
-.divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--amber), transparent); opacity: 0.5; }
-.divider-mark { color: var(--amber); font-size: 0.9rem; letter-spacing: 0.3em; }
+/* PROOF STRIP */
+.proof { background: var(--accent-dark); color: var(--paper); padding: clamp(2.5rem,5vw,3.5rem) clamp(1.25rem,5vw,3.5rem); }
+.proof-inner { max-width: 980px; margin: 0 auto; text-align: center; }
+.proof blockquote { font-family: var(--serif); font-size: clamp(1.3rem,2.6vw,1.9rem); line-height: 1.4; max-width: 30ch; margin: 0 auto; }
+.proof blockquote span { color: var(--gold); }
+.proof cite { display: block; margin-top: 1.2rem; font-style: normal; font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(247,244,237,0.6); }
 
 /* SECTIONS */
-section { padding: clamp(4rem,9vw,7.5rem) clamp(1.5rem,5vw,4rem); }
-.section-inner { max-width: 1160px; margin: 0 auto; }
-.fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+section { padding: clamp(3.5rem,8vw,6.5rem) clamp(1.25rem,5vw,3.5rem); }
+.inner { max-width: 1140px; margin: 0 auto; }
+.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .fade-up.visible { opacity: 1; transform: none; }
+.section-head { text-align: center; max-width: 640px; margin: 0 auto 3rem; }
+.section-head h2 { font-family: var(--serif); font-size: clamp(1.9rem,3.6vw,2.7rem); margin: 0.7rem 0 0.7rem; line-height: 1.15; }
+.section-head p { color: var(--muted); margin: 0 auto; }
 
-/* THE BOOK / PREMISE */
-#book { background: linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 50%, var(--ink) 100%); }
-.premise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem,5vw,4.5rem); align-items: start; }
-.premise-text h2 { font-size: clamp(1.9rem,3.6vw,2.8rem); margin: 0.6rem 0 1.2rem; }
-.premise-text p { color: var(--paper-dim); margin-bottom: 1.3rem; }
-.pillars { display: flex; flex-direction: column; gap: 1.8rem; }
-.pillar { display: flex; gap: 1.2rem; align-items: flex-start; }
-.pillar-num { font-family: Georgia, serif; font-size: 1.5rem; color: var(--amber); flex-shrink: 0; width: 2.4rem; text-align: center; line-height: 1.2; }
-.pillar-label { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.3rem; display: block; font-weight: 600; }
-.pillar p { font-size: 0.94rem; color: var(--paper-dim); margin: 0; }
+/* BIG IDEA */
+#idea { background: var(--paper); }
+.idea-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem,5vw,4.5rem); align-items: center; }
+.idea-text h2 { font-family: var(--serif); font-size: clamp(1.9rem,3.6vw,2.7rem); margin: 0.7rem 0 1.1rem; line-height: 1.15; }
+.idea-text p { color: var(--ink-soft); margin-bottom: 1.1rem; }
+.idea-card { background: var(--accent); color: #fff; border-radius: 14px; padding: clamp(1.8rem,3vw,2.6rem); }
+.idea-card .vs { display: flex; align-items: stretch; gap: 0; border-radius: 10px; overflow: hidden; }
+.idea-card .vs-col { flex: 1; padding: 1.4rem 1.2rem; }
+.idea-card .vs-col.bad { background: rgba(255,255,255,0.08); }
+.idea-card .vs-col.good { background: rgba(194,150,47,0.18); }
+.idea-card .vs-label { font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+.idea-card .vs-col p { font-size: 0.95rem; color: #fff; margin: 0; max-width: none; }
+.idea-card .vs-mid { display: flex; align-items: center; font-family: var(--serif); font-size: 0.9rem; padding: 0 0.4rem; opacity: 0.6; }
+
+/* LEARN */
+#learn { background: var(--paper-2); }
+.learn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 1.2rem; }
+.learn-item { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1.7rem 1.6rem; transition: transform 0.2s, box-shadow 0.2s; }
+.learn-item:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(24,25,27,0.07); }
+.learn-num { font-family: var(--serif); font-size: 1.1rem; color: #fff; background: var(--accent); width: 2.2rem; height: 2.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+.learn-item h3 { font-family: var(--serif); font-size: 1.18rem; margin-bottom: 0.5rem; line-height: 1.25; }
+.learn-item p { font-size: 0.92rem; color: var(--muted); margin: 0; }
 
 /* INSIDE / CHAPTERS */
-#inside { background: var(--ink); }
-.section-head { text-align: center; margin-bottom: 3rem; }
-.section-head h2 { font-size: clamp(1.9rem,3.6vw,2.8rem); margin: 0.6rem 0 0.8rem; }
-.section-head p { color: var(--muted); margin: 0 auto; }
-.chapters-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1.1rem; }
-.chapter { background: var(--slate); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 1.5rem 1.6rem; transition: border-color 0.25s, transform 0.25s; opacity: 0; transform: translateY(20px); }
-.chapter.visible { opacity: 1; transform: none; }
-.chapter:hover { border-color: var(--line); transform: translateY(-3px); }
-.chapter-no { font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); }
-.chapter h3 { font-family: Georgia, serif; font-size: 1.14rem; color: var(--paper); margin: 0.5rem 0 0.5rem; line-height: 1.25; }
-.chapter p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+#inside { background: var(--paper); }
+.chapters { max-width: 760px; margin: 0 auto; border-top: 1px solid var(--line); }
+.chapter { display: flex; gap: 1.3rem; align-items: baseline; padding: 1.15rem 0.4rem; border-bottom: 1px solid var(--line); transition: background 0.2s, padding 0.2s; }
+.chapter:hover { background: var(--card); padding-left: 1rem; padding-right: 1rem; }
+.chapter .ch-no { font-family: var(--serif); font-size: 0.95rem; color: var(--accent); font-weight: 600; min-width: 4.5rem; }
+.chapter .ch-title { font-family: var(--serif); font-size: 1.08rem; color: var(--ink); }
+.chapter .ch-desc { font-size: 0.9rem; color: var(--muted); margin-left: auto; text-align: right; max-width: 40%; }
 
 /* ABOUT */
-#about { background: linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%); }
-.about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(2rem,5vw,4.5rem); align-items: center; }
-.about-portrait { aspect-ratio: 4 / 5; border-radius: 10px; background:
-  radial-gradient(circle at 50% 35%, rgba(200,151,63,0.18), transparent 60%),
-  linear-gradient(160deg, var(--slate), var(--ink)); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; }
-.about-portrait .initials { font-family: Georgia, serif; font-size: 3.5rem; color: var(--amber-pale); letter-spacing: 0.05em; }
-.about-text h2 { font-size: clamp(1.9rem,3.6vw,2.8rem); margin: 0.6rem 0 1.2rem; }
-.about-text p { color: var(--paper-dim); margin-bottom: 1.2rem; }
-.about-creds { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.5rem; }
-.cred { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber-pale); border: 1px solid var(--line); border-radius: 20px; padding: 0.4rem 0.9rem; }
+#about { background: var(--paper-2); }
+.about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(2rem,5vw,4rem); align-items: center; }
+.about-portrait { aspect-ratio: 4 / 5; border-radius: 14px; background: radial-gradient(circle at 50% 38%, var(--accent-soft), var(--paper)); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; box-shadow: 0 16px 36px rgba(24,25,27,0.08); }
+.about-portrait .initials { font-family: var(--serif); font-size: 3.4rem; color: var(--accent); }
+.about-text h2 { font-family: var(--serif); font-size: clamp(1.9rem,3.6vw,2.6rem); margin: 0.7rem 0 1.1rem; }
+.about-text p { color: var(--ink-soft); margin-bottom: 1.1rem; }
+.creds { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 0.4rem; }
+.cred { font-size: 0.72rem; letter-spacing: 0.04em; color: var(--accent-dark); background: var(--accent-soft); border-radius: 20px; padding: 0.42rem 0.95rem; font-weight: 600; }
+.consult-link { display: inline-flex; align-items: center; gap: 0.7rem; margin-top: 1.7rem; padding: 0.85rem 1.4rem; border: 1.5px solid var(--accent); border-radius: 9px; color: var(--accent-dark); text-decoration: none; font-weight: 600; font-size: 0.92rem; transition: all 0.2s; background: var(--card); }
+.consult-link:hover { background: var(--accent); color: #fff; transform: translateY(-2px); box-shadow: 0 10px 22px rgba(32,49,79,0.22); }
+.consult-link .cl-mark { font-family: var(--serif); font-size: 1rem; width: 2rem; height: 2rem; border-radius: 6px; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; transition: all 0.2s; flex-shrink: 0; }
+.consult-link:hover .cl-mark { background: var(--gold); color: #1c1505; }
+.consult-link .cl-sub { display: block; font-size: 0.72rem; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+.consult-link:hover .cl-sub { color: rgba(255,255,255,0.85); }
+.consult-link svg { width: 15px; height: 15px; margin-left: 0.2rem; }
 
-/* BUY */
-#buy { background: var(--ink); text-align: center; }
-.buy-inner { max-width: 760px; margin: 0 auto; }
-.buy-inner h2 { font-size: clamp(2rem,4vw,3rem); margin: 1rem 0 1.2rem; }
-.buy-inner p { color: var(--paper-dim); margin: 0 auto 2rem; }
-.buy-cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-
-/* NEWSLETTER */
-#newsletter { background: linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%); text-align: center; }
-.news-inner { max-width: 620px; margin: 0 auto; }
-.news-inner h2 { font-size: clamp(1.9rem,3.6vw,2.6rem); margin: 1rem 0 1rem; }
-.news-inner > p { color: var(--paper-dim); margin: 0 auto 2.2rem; }
-.subscribe-form { display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; }
-.subscribe-form input { flex: 1; min-width: 240px; max-width: 360px; padding: 0.9rem 1.1rem; background: var(--slate); border: 1px solid var(--line); border-radius: 4px; color: var(--paper); font-size: 0.95rem; }
+/* LEAD MAGNET / NEWSLETTER */
+#newsletter { background: linear-gradient(160deg, var(--accent) 0%, var(--accent-dark) 100%); color: #fff; }
+.news-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem,5vw,4rem); align-items: center; }
+.news-copy .eyebrow { color: var(--gold); }
+.news-copy h2 { font-family: var(--serif); font-size: clamp(1.9rem,3.6vw,2.6rem); margin: 0.7rem 0 1rem; line-height: 1.15; }
+.news-copy p { color: rgba(255,255,255,0.85); margin-bottom: 0.5rem; }
+.news-card { background: #fff; color: var(--ink); border-radius: 14px; padding: clamp(1.6rem,3vw,2.2rem); box-shadow: 0 20px 50px rgba(0,0,0,0.25); }
+.news-card h3 { font-family: var(--serif); font-size: 1.25rem; margin-bottom: 0.4rem; }
+.news-card .lead-tag { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+.news-card p { font-size: 0.9rem; color: var(--muted); margin: 0.5rem 0 1.3rem; }
+.subscribe-form { display: flex; flex-direction: column; gap: 0.7rem; }
+.subscribe-form input { padding: 0.9rem 1.05rem; background: var(--paper); border: 1px solid var(--line); border-radius: 7px; color: var(--ink); font-size: 0.95rem; font-family: var(--sans); }
 .subscribe-form input::placeholder { color: var(--muted); }
-.subscribe-form input:focus { outline: none; border-color: var(--amber); }
-.news-fine { font-size: 0.74rem; color: var(--muted); margin: 1.2rem auto 0; }
+.subscribe-form input:focus { outline: none; border-color: var(--accent); }
+.subscribe-form .btn { width: 100%; }
+.news-or { text-align: center; font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 1rem 0 0.8rem; }
+.news-download { display: flex; align-items: center; justify-content: center; gap: 0.55rem; width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--line); border-radius: 7px; color: var(--accent-dark); text-decoration: none; font-weight: 600; font-size: 0.86rem; transition: all 0.2s; }
+.news-download:hover { border-color: var(--accent); background: var(--accent-soft); }
+.news-fine { font-size: 0.74rem; color: var(--muted); margin-top: 0.9rem; text-align: center; }
+
+/* FINAL BUY BAND */
+#buy { background: var(--accent-dark); color: var(--paper); text-align: center; }
+.buy-inner { max-width: 680px; margin: 0 auto; }
+.buy-inner h2 { font-family: var(--serif); font-size: clamp(2rem,4vw,2.9rem); margin: 1rem 0 1rem; }
+.buy-inner p { color: rgba(247,244,237,0.7); margin: 0 auto 2rem; }
+.buy-cta-group { display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap; }
 
 /* FOOTER */
-footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.05); padding: 3rem clamp(1.5rem,5vw,4rem); }
-.footer-inner { max-width: 1160px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-.footer-brand { font-family: Georgia, serif; font-size: 1rem; letter-spacing: 0.06em; }
-.footer-links { display: flex; gap: 1.6rem; list-style: none; }
-.footer-links a { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-.footer-links a:hover { color: var(--amber-pale); }
-.footer-copy { width: 100%; text-align: center; color: var(--muted); font-size: 0.72rem; margin-top: 1.5rem; }
+footer { background: var(--accent-dark); border-top: 1px solid rgba(255,255,255,0.08); padding: 2.5rem clamp(1.25rem,5vw,3.5rem); color: rgba(247,244,237,0.7); }
+.footer-inner { max-width: 1140px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.footer-brand { font-family: var(--serif); font-size: 1rem; color: var(--paper); }
+.footer-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+.footer-links a { font-size: 0.78rem; color: rgba(247,244,237,0.7); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: #fff; }
+.footer-copy { width: 100%; text-align: center; font-size: 0.74rem; margin-top: 1.4rem; color: rgba(247,244,237,0.45); }
 
 /* TOAST */
-#notify { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(140%); background: var(--amber); color: var(--ink); padding: 0.9rem 1.6rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; box-shadow: 0 12px 30px rgba(0,0,0,0.4); z-index: 200; transition: transform 0.4s ease; max-width: 90vw; text-align: center; }
+#notify { position: fixed; bottom: 1.6rem; left: 50%; transform: translateX(-50%) translateY(160%); background: var(--accent-dark); color: #fff; padding: 0.9rem 1.5rem; border-radius: 8px; font-size: 0.86rem; font-weight: 500; box-shadow: 0 14px 34px rgba(0,0,0,0.3); z-index: 200; transition: transform 0.4s ease; max-width: 90vw; text-align: center; }
 #notify.show { transform: translateX(-50%) translateY(0); }
 
-@media (max-width: 860px) {
-  .hero-grid { grid-template-columns: 1fr; text-align: center; }
-  .hero-copy { align-items: center; }
-  .hero-eyebrow-line::after { display: none; }
-  .hero-tagline { text-align: left; }
-  .hero-book { order: -1; margin-bottom: 1rem; }
-  .premise-grid, .about-grid { grid-template-columns: 1fr; }
-  .about-portrait { max-width: 320px; margin: 0 auto; }
-  .nav-links { position: fixed; top: var(--nav-h); left: 0; right: 0; flex-direction: column; background: rgba(13,17,23,0.99); padding: 1.5rem 0; gap: 1.4rem; border-bottom: 1px solid var(--line); transform: translateY(-150%); transition: transform 0.3s; }
+@media (max-width: 880px) {
+  .hero-grid, .idea-grid, .about-grid, .news-grid { grid-template-columns: 1fr; }
+  .hero-book { order: -1; margin-bottom: 0.5rem; }
+  .about-portrait { max-width: 300px; margin: 0 auto; }
+  .chapter .ch-desc { display: none; }
+  .nav-links { position: fixed; top: var(--nav-h); left: 0; right: 0; flex-direction: column; background: rgba(247,244,237,0.99); padding: 1.4rem 0; gap: 1.2rem; border-bottom: 1px solid var(--line); transform: translateY(-150%); transition: transform 0.3s; box-shadow: 0 12px 24px rgba(24,25,27,0.08); }
   .nav-links.open { transform: translateY(0); }
   .nav-toggle { display: block; }
 }
@@ -176,135 +198,172 @@ footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.05); p
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
   </button>
   <ul class="nav-links" id="nav-links">
-    <li><a href="#book">The Book</a></li>
-    <li><a href="#inside">Inside</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#newsletter">Newsletter</a></li>
+    <li><a href="#idea">The Idea</a></li>
+    <li><a href="#learn">What You'll Learn</a></li>
+    <li><a href="#about">Author</a></li>
+    <li><a href="#newsletter">Free Assessment</a></li>
     <li><a href="#buy" class="nav-cta">Buy the Book</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-bg"></div>
+<header class="hero" id="home">
   <div class="hero-grid">
     <div class="hero-copy">
-      <div class="hero-eyebrow-line"><span class="eyebrow">A Book by Sean W. Chambers</span></div>
-      <h1 class="hero-title display">Outcomes <span>Over</span> Processes</h1>
-      <p class="hero-subtitle">Why some organizations thrive through change — and others don't. A field-tested case for measuring what you deliver, not the activity of delivering it.</p>
-      <p class="hero-tagline">"Process becomes the point. Outcomes get assumed. This book is about closing that gap."</p>
+      <span class="eyebrow">New from Sean W. Chambers</span>
+      <h1 class="hero-title serif">Stop rewarding activity. Start delivering <span>outcomes.</span></h1>
+      <p class="hero-sub"><em>Outcomes Over Processes</em> is the field-tested case for why some organizations thrive through change while others stall — and a practical playbook for leading the shift.</p>
       <div class="hero-cta-group">
         <a href="#buy" class="btn btn-primary">Buy the Book</a>
-        <a href="#newsletter" class="btn btn-ghost">Join the Newsletter</a>
+        <a href="#newsletter" class="btn btn-ghost">Get the Free Self-Assessment</a>
       </div>
+      <div class="hero-trust"><strong>First edition · 2026</strong> &nbsp;·&nbsp; Hardback, paperback &amp; ebook</div>
     </div>
     <div class="hero-book">
-      <div class="book">
-        <div class="book-top">First Edition · 2026</div>
-        <div class="book-rule"></div>
-        <div class="book-title display">Outcomes<br><em>Over</em><br>Processes</div>
-        <div class="book-author">Sean W. Chambers</div>
-        <div class="book-sub">Why Some Organizations Thrive Through Change and Others Don't</div>
+      <img class="book-img" src="cover.jpg" alt="Outcomes Over Processes book cover — Sean W. Chambers">
+    </div>
+  </div>
+</header>
+
+<!-- PROOF STRIP (replace with a real endorsement when available) -->
+<div class="proof">
+  <div class="proof-inner">
+    <blockquote class="serif">"Process becomes the point. Outcomes get assumed. <span>This book is about closing that gap.</span>"</blockquote>
+    <cite>From the introduction</cite>
+  </div>
+</div>
+
+<!-- THE BIG IDEA -->
+<section id="idea">
+  <div class="inner idea-grid">
+    <div class="idea-text fade-up">
+      <span class="eyebrow">The Big Idea</span>
+      <h2 class="serif">A simple inversion, quietly fatal</h2>
+      <p>Healthy organizations keep the order right: the process exists to serve the outcome. The trouble starts when that order flips — teams get measured on activity, the process becomes the goal, and everyone stays busy while the customer stops being better off.</p>
+      <p>Drawing on case studies, history, and the shift now underway in the AI era, this book shows why the organizations that endure hold the outcome fixed and let the process flex — and how leaders can do the same.</p>
+    </div>
+    <div class="idea-card fade-up">
+      <div class="vs">
+        <div class="vs-col bad">
+          <div class="vs-label">Process-bound</div>
+          <p>Measures the work performed. Defends "how we've always done it." Gets overtaken when the market moves.</p>
+        </div>
+        <div class="vs-mid serif">vs</div>
+        <div class="vs-col good">
+          <div class="vs-label">Outcome-focused</div>
+          <p>Measures the value delivered. Flexes the process. Thrives through change.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- THE BOOK -->
-<section id="book">
-  <div class="section-inner premise-grid">
-    <div class="premise-text fade-up">
-      <span class="eyebrow">The Argument</span>
-      <h2 class="display">A simple inversion, quietly fatal</h2>
-      <p>Too many teams fall in love with the <em>activity</em> of producing something and lose sight of the <em>result</em> the customer actually wanted. The process exists to serve the outcome — but somewhere along the way the order flips, and the process becomes the goal it was only ever meant to serve.</p>
-      <p>Drawing on case studies, history, and the shift now underway in the AI era, <em>Outcomes Over Processes</em> shows why the organizations that endure hold the outcome fixed and let the process flex — and gives leaders a practical way to do the same.</p>
+<!-- WHAT YOU'LL LEARN -->
+<section id="learn">
+  <div class="inner">
+    <div class="section-head fade-up">
+      <span class="eyebrow">What You'll Learn</span>
+      <h2 class="serif">From insight to Monday-morning practice</h2>
+      <p>Concrete, evidence-based tools you can put to work on your own team.</p>
     </div>
-    <div class="pillars fade-up">
-      <div class="pillar">
-        <div class="pillar-num">01</div>
-        <div><span class="pillar-label">Measure results, not motion</span><p>Build metrics around the value customers receive, not the volume of work you perform to produce it.</p></div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">02</div>
-        <div><span class="pillar-label">Hold the outcome, flex the process</span><p>When conditions change, change the process and keep the outcome fixed — not the reverse.</p></div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">03</div>
-        <div><span class="pillar-label">Thrive through change</span><p>The habit that separates organizations that endure from those overtaken the moment the market moves.</p></div>
-      </div>
+    <div class="learn-grid">
+      <div class="learn-item fade-up"><div class="learn-num serif">1</div><h3>Spot the inversion</h3><p>Recognize the moment a process quietly becomes the goal it was meant to serve.</p></div>
+      <div class="learn-item fade-up"><div class="learn-num serif">2</div><h3>Measure what matters</h3><p>Build metrics around the value customers receive — not the volume of work you do.</p></div>
+      <div class="learn-item fade-up"><div class="learn-num serif">3</div><h3>Lead the shift</h3><p>Overcome resistance and move an organization to an outcome-focused footing without it snapping back.</p></div>
+      <div class="learn-item fade-up"><div class="learn-num serif">4</div><h3>Balance the two</h3><p>Keep the discipline of good process without letting it crowd out the result.</p></div>
+      <div class="learn-item fade-up"><div class="learn-num serif">5</div><h3>Compete in the AI era</h3><p>Understand what changes — and what matters more than ever — as work is automated.</p></div>
+      <div class="learn-item fade-up"><div class="learn-num serif">6</div><h3>Assess your own team</h3><p>Run the Outcome Focus Self-Assessment and know exactly where you stand.</p></div>
     </div>
   </div>
 </section>
 
 <!-- INSIDE THE BOOK -->
 <section id="inside">
-  <div class="section-inner">
+  <div class="inner">
     <div class="section-head fade-up">
       <span class="eyebrow">Inside the Book</span>
-      <h2 class="display">Ten chapters, one shift in focus</h2>
-      <p>From the history of process-versus-outcome failures to the business case, the implementation playbook, and the AI era ahead.</p>
+      <h2 class="serif">Ten chapters, two appendices</h2>
     </div>
-    <div class="chapters-grid">
-      <div class="chapter"><div class="chapter-no">Ch. 01</div><h3>Introduction</h3><p>The question behind the book: why some organizations thrive through change.</p></div>
-      <div class="chapter"><div class="chapter-no">Ch. 02</div><h3>Understanding Outcomes and Processes</h3><p>The distinction that everything else rests on — defined precisely.</p></div>
-      <div class="chapter"><div class="chapter-no">Ch. 03</div><h3>Lessons from History</h3><p>Process-versus-outcome failures and successes, drawn from the record.</p></div>
-      <div class="chapter"><div class="chapter-no">Ch. 04</div><h3>The Business Case</h3><p>Why outcome-focused strategies win — in the numbers that matter.</p></div>
-      <div class="chapter"><div class="chapter-no">Ch. 05</div><h3>Implementing the Strategy</h3><p>The operational templates and steps to put outcomes first.</p></div>
-      <div class="chapter"><div class="chapter-no">Ch. 06</div><h3>Overcoming Resistance</h3><p>The challenges of shifting focus — and how to move through them.</p></div>
-      <div class="chapter"><div class="chapter-no">Ch. 07</div><h3>Balancing Process and Outcomes</h3><p>Process still matters. Where the line belongs, and why.</p></div>
-      <div class="chapter"><div class="chapter-no">Ch. 08</div><h3>Continuous Improvement</h3><p>The lifeblood of outcome-focused organizations.</p></div>
-      <div class="chapter"><div class="chapter-no">Ch. 09</div><h3>Outcomes in the AI Era</h3><p>What changes — and what matters more than ever — as work is automated.</p></div>
-      <div class="chapter"><div class="chapter-no">Ch. 10</div><h3>A Call to Action</h3><p>From idea to practice: where to start on Monday morning.</p></div>
-      <div class="chapter"><div class="chapter-no">Appendix A</div><h3>The Outcome Focus Self-Assessment</h3><p>Score your own organization in five minutes.</p></div>
-      <div class="chapter"><div class="chapter-no">Appendix B</div><h3>A Structured Reading List</h3><p>Where to go deeper, curated chapter by chapter.</p></div>
+    <div class="chapters fade-up">
+      <div class="chapter"><span class="ch-no serif">Ch. 1</span><span class="ch-title serif">Introduction</span><span class="ch-desc">The question behind the book.</span></div>
+      <div class="chapter"><span class="ch-no serif">Ch. 2</span><span class="ch-title serif">Understanding Outcomes and Processes</span><span class="ch-desc">The distinction everything rests on.</span></div>
+      <div class="chapter"><span class="ch-no serif">Ch. 3</span><span class="ch-title serif">Lessons from History</span><span class="ch-desc">Failures and successes from the record.</span></div>
+      <div class="chapter"><span class="ch-no serif">Ch. 4</span><span class="ch-title serif">The Business Case</span><span class="ch-desc">Why outcome focus wins.</span></div>
+      <div class="chapter"><span class="ch-no serif">Ch. 5</span><span class="ch-title serif">Implementing the Strategy</span><span class="ch-desc">Templates and steps.</span></div>
+      <div class="chapter"><span class="ch-no serif">Ch. 6</span><span class="ch-title serif">Overcoming Resistance</span><span class="ch-desc">Moving through the friction.</span></div>
+      <div class="chapter"><span class="ch-no serif">Ch. 7</span><span class="ch-title serif">Balancing Process and Outcomes</span><span class="ch-desc">Where the line belongs.</span></div>
+      <div class="chapter"><span class="ch-no serif">Ch. 8</span><span class="ch-title serif">Continuous Improvement</span><span class="ch-desc">The lifeblood of the model.</span></div>
+      <div class="chapter"><span class="ch-no serif">Ch. 9</span><span class="ch-title serif">Outcomes in the AI Era</span><span class="ch-desc">What automation changes.</span></div>
+      <div class="chapter"><span class="ch-no serif">Ch. 10</span><span class="ch-title serif">A Call to Action</span><span class="ch-desc">Where to start.</span></div>
+      <div class="chapter"><span class="ch-no serif">App. A</span><span class="ch-title serif">The Outcome Focus Self-Assessment</span><span class="ch-desc">Score your organization.</span></div>
+      <div class="chapter"><span class="ch-no serif">App. B</span><span class="ch-title serif">A Structured Reading List</span><span class="ch-desc">Where to go deeper.</span></div>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="section-inner about-grid">
-    <div class="about-portrait fade-up"><span class="initials">SC</span></div>
+  <div class="inner about-grid">
+    <div class="about-portrait fade-up"><span class="initials serif">SC</span></div>
     <div class="about-text fade-up">
       <span class="eyebrow">About the Author</span>
-      <h2 class="display">Sean W. Chambers</h2>
-      <p>Sean W. Chambers is an operations and pipeline leader, a U.S. Army veteran, and the author of <em>Outcomes Over Processes</em>. Years of midstream and operations leadership left him with a set of questions about why some organizations focus on what they produce for the customer while others fixate on the activity of producing it.</p>
-      <p>He earned his MBA with a minor in Data Analytics from Texas A&amp;M University–Corpus Christi, and is a Doctor of Business Administration candidate (ABD) at William Howard Taft University. Every factual claim in the book is independently verified against primary sources. He writes from Midland, Texas.</p>
-      <div class="about-creds">
+      <h2 class="serif">Sean W. Chambers</h2>
+      <p>Sean is an operations and pipeline leader, a U.S. Army veteran, and the author of <em>Outcomes Over Processes</em>. Years of midstream and operations leadership left him with a question about why some organizations focus on what they deliver for the customer while others fixate on the activity of producing it.</p>
+      <p>He holds an MBA with a minor in Data Analytics from Texas A&amp;M University–Corpus Christi and is a Doctor of Business Administration candidate (ABD) at William Howard Taft University. Every factual claim in the book is independently verified against primary sources. He writes from Midland, Texas.</p>
+      <div class="creds">
         <span class="cred">MBA</span>
         <span class="cred">DBA Candidate (ABD)</span>
         <span class="cred">Data Analytics</span>
         <span class="cred">U.S. Army Veteran</span>
       </div>
+      <a href="https://drengrconsulting.com" target="_blank" rel="noopener" class="consult-link">
+        <span class="cl-mark">D</span>
+        <span>Work with Sean
+          <span class="cl-sub">Drengr Consulting — bring these ideas to your organization</span>
+        </span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- BUY -->
+<!-- LEAD MAGNET / NEWSLETTER -->
+<section id="newsletter">
+  <div class="news-grid">
+    <div class="news-copy fade-up">
+      <span class="eyebrow">Free Download</span>
+      <h2 class="serif">Where does your team really stand?</h2>
+      <p>Get the <strong>Outcome Focus Self-Assessment</strong> — a 20-question diagnostic you can run on your own organization, straight from Appendix A of the book. Join the newsletter to get it by email, or download it now.</p>
+      <p style="opacity:0.7; font-size:0.9rem;">Evidence-based notes on leading change. No spam. Unsubscribe anytime.</p>
+    </div>
+    <div class="news-card fade-up">
+      <span class="lead-tag">The Self-Assessment</span>
+      <h3 class="serif">Get it by email + the welcome series</h3>
+      <p>Enter your email and I'll send your first welcome note right away.</p>
+      <form class="subscribe-form" onsubmit="handleSubscribe(event)">
+        <input type="email" name="email_address" placeholder="your@email.com" required aria-label="Email address">
+        <button type="submit" class="btn btn-primary">Subscribe &amp; Get the Assessment</button>
+      </form>
+      <div class="news-or">— or —</div>
+      <a class="news-download" href="OOP-Outcome-Focus-Self-Assessment.pdf" download>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+        Download the PDF now
+      </a>
+      <div class="news-fine">Sent from Sean W. Chambers via Kit.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL BUY -->
 <section id="buy">
-  <div class="divider"><span class="divider-mark">◆</span></div>
   <div class="buy-inner">
     <span class="eyebrow">Get the Book</span>
-    <h2 class="display">Read Outcomes Over Processes</h2>
+    <h2 class="serif">Read Outcomes Over Processes</h2>
     <p>Available in hardback, paperback, and ebook. First edition, 2026.</p>
     <div class="buy-cta-group">
-      <a href="#" data-buy class="btn btn-primary">Buy on Amazon</a>
-      <a href="#" data-buy class="btn btn-ghost">Other Retailers</a>
+      <a href="#" data-buy class="btn btn-gold">Buy on Amazon</a>
+      <a href="#" data-buy class="btn btn-ghost" style="color:var(--paper); border-color:rgba(247,244,237,0.3)">Other Retailers</a>
     </div>
-  </div>
-</section>
-
-<!-- NEWSLETTER -->
-<section id="newsletter">
-  <div class="news-inner">
-    <span class="eyebrow">The Newsletter</span>
-    <h2 class="display">Thinking in outcomes, in your inbox</h2>
-    <p>Join to receive the welcome series and ongoing, evidence-based notes on leading change — case studies, history, and the AI era. New subscribers get a short self-assessment to run on their own team.</p>
-    <form class="subscribe-form" onsubmit="handleSubscribe(event)">
-      <input type="email" name="email_address" placeholder="your@email.com" required aria-label="Email address">
-      <button type="submit" class="btn btn-primary">Subscribe</button>
-    </form>
-    <p class="news-fine">No spam. Unsubscribe anytime. Sent from Sean W. Chambers.</p>
   </div>
 </section>
 
@@ -312,11 +371,12 @@ footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.05); p
   <div class="footer-inner">
     <span class="footer-brand">Outcomes Over Processes</span>
     <ul class="footer-links">
-      <li><a href="#book">The Book</a></li>
-      <li><a href="#inside">Inside</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#newsletter">Newsletter</a></li>
+      <li><a href="#idea">The Idea</a></li>
+      <li><a href="#learn">What You'll Learn</a></li>
+      <li><a href="#about">Author</a></li>
+      <li><a href="#newsletter">Free Assessment</a></li>
       <li><a href="#buy">Buy</a></li>
+      <li><a href="https://drengrconsulting.com" target="_blank" rel="noopener">Drengr Consulting ↗</a></li>
     </ul>
   </div>
   <div class="footer-copy">© 2026 Sean W. Chambers · Midland, Texas. All rights reserved.</div>
@@ -326,7 +386,7 @@ footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.05); p
 
 <script>
 const nav = document.getElementById("main-nav");
-window.addEventListener("scroll", () => { nav.classList.toggle("solid", window.scrollY > 60); }, { passive: true });
+window.addEventListener("scroll", () => { nav.classList.toggle("solid", window.scrollY > 40); }, { passive: true });
 
 const toggle = document.getElementById("nav-toggle");
 const navLinks = document.getElementById("nav-links");
@@ -341,12 +401,8 @@ navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
-}, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
-document.querySelectorAll(".fade-up, .chapter").forEach(el => observer.observe(el));
-
-document.querySelectorAll(".chapters-grid").forEach(grid => {
-  Array.from(grid.children).forEach((child, i) => { child.style.transitionDelay = (i * 0.06) + "s"; });
-});
+}, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
 
 function showNotify(msg) {
   const el = document.getElementById("notify");
@@ -363,17 +419,16 @@ function handleSubscribe(e) {
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: "email_address=" + encodeURIComponent(email)
   }).catch(() => {});
-  showNotify("You're in — check your inbox for the welcome email.");
+  showNotify("You're in — check your inbox for the welcome note.");
   e.target.reset();
 }
 
-// Buy buttons are placeholders until retailer links are live
 document.querySelectorAll("[data-buy]").forEach(b => b.addEventListener("click", (e) => {
   if (b.getAttribute("href") === "#") { e.preventDefault(); showNotify("Purchase links are being finalized — check back soon."); }
 }));
 
 if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  document.querySelectorAll(".fade-up, .chapter").forEach(el => el.classList.add("visible"));
+  document.querySelectorAll(".fade-up").forEach(el => el.classList.add("visible"));
 }
 </script>
 </body>
