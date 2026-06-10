@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outcomes Over Processes — Sean W. Chambers</title>
+<meta name="description" content="Outcomes Over Processes: Why Some Organizations Thrive Through Change and Others Don't. A book by Sean W. Chambers — MBA, DBA Candidate, U.S. Army Veteran.">
+<style>
+:root {
+  --ink: #0d1117;
+  --ink-2: #131a24;
+  --slate: #1b2531;
+  --paper: #f4f1ea;
+  --paper-dim: #c7c2b6;
+  --muted: #8b93a0;
+  --amber: #c8973f;
+  --amber-pale: #e0b864;
+  --line: rgba(200,151,63,0.22);
+  --nav-h: 72px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { background: var(--ink); color: var(--paper); font-family: "Inter", "Helvetica Neue", Arial, sans-serif; line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+.display { font-family: Georgia, "Times New Roman", serif; font-weight: 400; letter-spacing: 0.01em; line-height: 1.12; }
+.eyebrow { font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--amber); font-weight: 600; }
+p { max-width: 64ch; }
+a { color: inherit; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1.5rem,5vw,4rem); background: linear-gradient(to bottom, rgba(13,17,23,0.96) 0%, rgba(13,17,23,0) 100%); transition: background 0.3s, border-color 0.3s; }
+nav.solid { background: rgba(13,17,23,0.97); border-bottom: 1px solid var(--line); }
+.nav-brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+.monogram { width: 38px; height: 38px; flex-shrink: 0; border: 1.5px solid var(--amber); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-size: 0.82rem; letter-spacing: 0.04em; color: var(--amber-pale); }
+.nav-name { font-family: Georgia, serif; font-size: 1.02rem; letter-spacing: 0.06em; color: var(--paper); }
+.nav-links { display: flex; gap: 2.3rem; list-style: none; align-items: center; }
+.nav-links a { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--paper-dim); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--amber-pale); }
+.nav-links .nav-cta { border: 1px solid var(--line); padding: 0.5rem 1.1rem; border-radius: 4px; color: var(--paper); }
+.nav-links .nav-cta:hover { background: var(--amber); color: var(--ink); border-color: var(--amber); }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: var(--paper); }
+.nav-toggle svg { width: 26px; height: 26px; }
+
+/* HERO */
+.hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; background:
+  radial-gradient(ellipse 55% 65% at 75% 35%, rgba(200,151,63,0.12) 0%, transparent 65%),
+  radial-gradient(ellipse 80% 60% at 20% 80%, rgba(27,37,49,0.9) 0%, transparent 55%),
+  linear-gradient(160deg, var(--ink-2) 0%, var(--ink) 70%); }
+.hero-grid { position: relative; z-index: 2; max-width: 1160px; margin: 0 auto; width: 100%; padding: calc(var(--nav-h) + 3rem) clamp(1.5rem,5vw,4rem) 4rem; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem,6vw,5rem); align-items: center; }
+.hero-copy { display: flex; flex-direction: column; gap: 1.6rem; }
+.hero-eyebrow-line { display: flex; align-items: center; gap: 1rem; }
+.hero-eyebrow-line::after { content: ""; flex: 1; height: 1px; background: linear-gradient(to right, var(--amber), transparent); opacity: 0.6; max-width: 120px; }
+.hero-title { font-size: clamp(2.6rem,6.5vw,4.6rem); color: var(--paper); }
+.hero-title span { color: var(--amber-pale); }
+.hero-subtitle { font-size: clamp(0.98rem,1.6vw,1.18rem); color: var(--paper-dim); max-width: 46ch; line-height: 1.7; }
+.hero-tagline { font-family: Georgia, serif; font-style: italic; font-size: clamp(1.02rem,1.8vw,1.25rem); color: var(--amber-pale); max-width: 46ch; line-height: 1.6; border-left: 2px solid var(--amber); padding-left: 1.3rem; }
+.hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.4rem; }
+.btn { display: inline-block; padding: 0.85rem 2rem; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; text-decoration: none; cursor: pointer; border: none; border-radius: 4px; transition: all 0.25s; }
+.btn-primary { background: var(--amber); color: var(--ink); }
+.btn-primary:hover { background: var(--amber-pale); transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: var(--paper); border: 1px solid rgba(244,241,234,0.3); }
+.btn-ghost:hover { border-color: var(--amber); color: var(--amber-pale); }
+
+/* BOOK COVER OBJECT */
+.hero-book { display: flex; justify-content: center; perspective: 1400px; }
+.book { position: relative; width: clamp(220px,26vw,300px); aspect-ratio: 6 / 9; border-radius: 4px 8px 8px 4px; background: linear-gradient(155deg, #16202b 0%, #0f1620 100%); box-shadow: 0 30px 60px rgba(0,0,0,0.55), -2px 0 0 #0a0f15, inset 0 0 0 1px rgba(200,151,63,0.25); transform: rotateY(-16deg) rotateX(3deg); transition: transform 0.5s ease; display: flex; flex-direction: column; padding: 2rem 1.6rem; }
+.book:hover { transform: rotateY(-6deg) rotateX(1deg); }
+.book::before { content: ""; position: absolute; left: 14px; top: 0; bottom: 0; width: 2px; background: rgba(0,0,0,0.4); }
+.book-top { font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--amber); text-align: center; }
+.book-rule { width: 38px; height: 1px; background: var(--amber); opacity: 0.7; margin: 1.1rem auto; }
+.book-title { font-family: Georgia, serif; font-size: clamp(1.5rem,2.6vw,1.95rem); line-height: 1.1; text-align: center; color: var(--paper); margin-top: 0.4rem; }
+.book-title em { color: var(--amber-pale); font-style: normal; }
+.book-sub { font-size: 0.64rem; line-height: 1.5; letter-spacing: 0.04em; color: var(--paper-dim); text-align: center; margin-top: auto; }
+.book-author { font-family: Georgia, serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--paper); text-align: center; margin-top: 1rem; }
+
+/* DIVIDER */
+.divider { display: flex; align-items: center; gap: 1.4rem; margin: 0 auto; max-width: 280px; }
+.divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--amber), transparent); opacity: 0.5; }
+.divider-mark { color: var(--amber); font-size: 0.9rem; letter-spacing: 0.3em; }
+
+/* SECTIONS */
+section { padding: clamp(4rem,9vw,7.5rem) clamp(1.5rem,5vw,4rem); }
+.section-inner { max-width: 1160px; margin: 0 auto; }
+.fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-up.visible { opacity: 1; transform: none; }
+
+/* THE BOOK / PREMISE */
+#book { background: linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 50%, var(--ink) 100%); }
+.premise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem,5vw,4.5rem); align-items: start; }
+.premise-text h2 { font-size: clamp(1.9rem,3.6vw,2.8rem); margin: 0.6rem 0 1.2rem; }
+.premise-text p { color: var(--paper-dim); margin-bottom: 1.3rem; }
+.pillars { display: flex; flex-direction: column; gap: 1.8rem; }
+.pillar { display: flex; gap: 1.2rem; align-items: flex-start; }
+.pillar-num { font-family: Georgia, serif; font-size: 1.5rem; color: var(--amber); flex-shrink: 0; width: 2.4rem; text-align: center; line-height: 1.2; }
+.pillar-label { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.3rem; display: block; font-weight: 600; }
+.pillar p { font-size: 0.94rem; color: var(--paper-dim); margin: 0; }
+
+/* INSIDE / CHAPTERS */
+#inside { background: var(--ink); }
+.section-head { text-align: center; margin-bottom: 3rem; }
+.section-head h2 { font-size: clamp(1.9rem,3.6vw,2.8rem); margin: 0.6rem 0 0.8rem; }
+.section-head p { color: var(--muted); margin: 0 auto; }
+.chapters-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1.1rem; }
+.chapter { background: var(--slate); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 1.5rem 1.6rem; transition: border-color 0.25s, transform 0.25s; opacity: 0; transform: translateY(20px); }
+.chapter.visible { opacity: 1; transform: none; }
+.chapter:hover { border-color: var(--line); transform: translateY(-3px); }
+.chapter-no { font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); }
+.chapter h3 { font-family: Georgia, serif; font-size: 1.14rem; color: var(--paper); margin: 0.5rem 0 0.5rem; line-height: 1.25; }
+.chapter p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+
+/* ABOUT */
+#about { background: linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%); }
+.about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(2rem,5vw,4.5rem); align-items: center; }
+.about-portrait { aspect-ratio: 4 / 5; border-radius: 10px; background:
+  radial-gradient(circle at 50% 35%, rgba(200,151,63,0.18), transparent 60%),
+  linear-gradient(160deg, var(--slate), var(--ink)); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; }
+.about-portrait .initials { font-family: Georgia, serif; font-size: 3.5rem; color: var(--amber-pale); letter-spacing: 0.05em; }
+.about-text h2 { font-size: clamp(1.9rem,3.6vw,2.8rem); margin: 0.6rem 0 1.2rem; }
+.about-text p { color: var(--paper-dim); margin-bottom: 1.2rem; }
+.about-creds { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.5rem; }
+.cred { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber-pale); border: 1px solid var(--line); border-radius: 20px; padding: 0.4rem 0.9rem; }
+
+/* BUY */
+#buy { background: var(--ink); text-align: center; }
+.buy-inner { max-width: 760px; margin: 0 auto; }
+.buy-inner h2 { font-size: clamp(2rem,4vw,3rem); margin: 1rem 0 1.2rem; }
+.buy-inner p { color: var(--paper-dim); margin: 0 auto 2rem; }
+.buy-cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* NEWSLETTER */
+#newsletter { background: linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%); text-align: center; }
+.news-inner { max-width: 620px; margin: 0 auto; }
+.news-inner h2 { font-size: clamp(1.9rem,3.6vw,2.6rem); margin: 1rem 0 1rem; }
+.news-inner > p { color: var(--paper-dim); margin: 0 auto 2.2rem; }
+.subscribe-form { display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; }
+.subscribe-form input { flex: 1; min-width: 240px; max-width: 360px; padding: 0.9rem 1.1rem; background: var(--slate); border: 1px solid var(--line); border-radius: 4px; color: var(--paper); font-size: 0.95rem; }
+.subscribe-form input::placeholder { color: var(--muted); }
+.subscribe-form input:focus { outline: none; border-color: var(--amber); }
+.news-fine { font-size: 0.74rem; color: var(--muted); margin: 1.2rem auto 0; }
+
+/* FOOTER */
+footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.05); padding: 3rem clamp(1.5rem,5vw,4rem); }
+.footer-inner { max-width: 1160px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.footer-brand { font-family: Georgia, serif; font-size: 1rem; letter-spacing: 0.06em; }
+.footer-links { display: flex; gap: 1.6rem; list-style: none; }
+.footer-links a { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--amber-pale); }
+.footer-copy { width: 100%; text-align: center; color: var(--muted); font-size: 0.72rem; margin-top: 1.5rem; }
+
+/* TOAST */
+#notify { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(140%); background: var(--amber); color: var(--ink); padding: 0.9rem 1.6rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; box-shadow: 0 12px 30px rgba(0,0,0,0.4); z-index: 200; transition: transform 0.4s ease; max-width: 90vw; text-align: center; }
+#notify.show { transform: translateX(-50%) translateY(0); }
+
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; text-align: center; }
+  .hero-copy { align-items: center; }
+  .hero-eyebrow-line::after { display: none; }
+  .hero-tagline { text-align: left; }
+  .hero-book { order: -1; margin-bottom: 1rem; }
+  .premise-grid, .about-grid { grid-template-columns: 1fr; }
+  .about-portrait { max-width: 320px; margin: 0 auto; }
+  .nav-links { position: fixed; top: var(--nav-h); left: 0; right: 0; flex-direction: column; background: rgba(13,17,23,0.99); padding: 1.5rem 0; gap: 1.4rem; border-bottom: 1px solid var(--line); transform: translateY(-150%); transition: transform 0.3s; }
+  .nav-links.open { transform: translateY(0); }
+  .nav-toggle { display: block; }
+}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="#home" class="nav-brand">
+    <span class="monogram">OOP</span>
+    <span class="nav-name">Sean W. Chambers</span>
+  </a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#book">The Book</a></li>
+    <li><a href="#inside">Inside</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#newsletter">Newsletter</a></li>
+    <li><a href="#buy" class="nav-cta">Buy the Book</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="hero-eyebrow-line"><span class="eyebrow">A Book by Sean W. Chambers</span></div>
+      <h1 class="hero-title display">Outcomes <span>Over</span> Processes</h1>
+      <p class="hero-subtitle">Why some organizations thrive through change — and others don't. A field-tested case for measuring what you deliver, not the activity of delivering it.</p>
+      <p class="hero-tagline">"Process becomes the point. Outcomes get assumed. This book is about closing that gap."</p>
+      <div class="hero-cta-group">
+        <a href="#buy" class="btn btn-primary">Buy the Book</a>
+        <a href="#newsletter" class="btn btn-ghost">Join the Newsletter</a>
+      </div>
+    </div>
+    <div class="hero-book">
+      <div class="book">
+        <div class="book-top">First Edition · 2026</div>
+        <div class="book-rule"></div>
+        <div class="book-title display">Outcomes<br><em>Over</em><br>Processes</div>
+        <div class="book-author">Sean W. Chambers</div>
+        <div class="book-sub">Why Some Organizations Thrive Through Change and Others Don't</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE BOOK -->
+<section id="book">
+  <div class="section-inner premise-grid">
+    <div class="premise-text fade-up">
+      <span class="eyebrow">The Argument</span>
+      <h2 class="display">A simple inversion, quietly fatal</h2>
+      <p>Too many teams fall in love with the <em>activity</em> of producing something and lose sight of the <em>result</em> the customer actually wanted. The process exists to serve the outcome — but somewhere along the way the order flips, and the process becomes the goal it was only ever meant to serve.</p>
+      <p>Drawing on case studies, history, and the shift now underway in the AI era, <em>Outcomes Over Processes</em> shows why the organizations that endure hold the outcome fixed and let the process flex — and gives leaders a practical way to do the same.</p>
+    </div>
+    <div class="pillars fade-up">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div><span class="pillar-label">Measure results, not motion</span><p>Build metrics around the value customers receive, not the volume of work you perform to produce it.</p></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div><span class="pillar-label">Hold the outcome, flex the process</span><p>When conditions change, change the process and keep the outcome fixed — not the reverse.</p></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div><span class="pillar-label">Thrive through change</span><p>The habit that separates organizations that endure from those overtaken the moment the market moves.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIDE THE BOOK -->
+<section id="inside">
+  <div class="section-inner">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Inside the Book</span>
+      <h2 class="display">Ten chapters, one shift in focus</h2>
+      <p>From the history of process-versus-outcome failures to the business case, the implementation playbook, and the AI era ahead.</p>
+    </div>
+    <div class="chapters-grid">
+      <div class="chapter"><div class="chapter-no">Ch. 01</div><h3>Introduction</h3><p>The question behind the book: why some organizations thrive through change.</p></div>
+      <div class="chapter"><div class="chapter-no">Ch. 02</div><h3>Understanding Outcomes and Processes</h3><p>The distinction that everything else rests on — defined precisely.</p></div>
+      <div class="chapter"><div class="chapter-no">Ch. 03</div><h3>Lessons from History</h3><p>Process-versus-outcome failures and successes, drawn from the record.</p></div>
+      <div class="chapter"><div class="chapter-no">Ch. 04</div><h3>The Business Case</h3><p>Why outcome-focused strategies win — in the numbers that matter.</p></div>
+      <div class="chapter"><div class="chapter-no">Ch. 05</div><h3>Implementing the Strategy</h3><p>The operational templates and steps to put outcomes first.</p></div>
+      <div class="chapter"><div class="chapter-no">Ch. 06</div><h3>Overcoming Resistance</h3><p>The challenges of shifting focus — and how to move through them.</p></div>
+      <div class="chapter"><div class="chapter-no">Ch. 07</div><h3>Balancing Process and Outcomes</h3><p>Process still matters. Where the line belongs, and why.</p></div>
+      <div class="chapter"><div class="chapter-no">Ch. 08</div><h3>Continuous Improvement</h3><p>The lifeblood of outcome-focused organizations.</p></div>
+      <div class="chapter"><div class="chapter-no">Ch. 09</div><h3>Outcomes in the AI Era</h3><p>What changes — and what matters more than ever — as work is automated.</p></div>
+      <div class="chapter"><div class="chapter-no">Ch. 10</div><h3>A Call to Action</h3><p>From idea to practice: where to start on Monday morning.</p></div>
+      <div class="chapter"><div class="chapter-no">Appendix A</div><h3>The Outcome Focus Self-Assessment</h3><p>Score your own organization in five minutes.</p></div>
+      <div class="chapter"><div class="chapter-no">Appendix B</div><h3>A Structured Reading List</h3><p>Where to go deeper, curated chapter by chapter.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner about-grid">
+    <div class="about-portrait fade-up"><span class="initials">SC</span></div>
+    <div class="about-text fade-up">
+      <span class="eyebrow">About the Author</span>
+      <h2 class="display">Sean W. Chambers</h2>
+      <p>Sean W. Chambers is an operations and pipeline leader, a U.S. Army veteran, and the author of <em>Outcomes Over Processes</em>. Years of midstream and operations leadership left him with a set of questions about why some organizations focus on what they produce for the customer while others fixate on the activity of producing it.</p>
+      <p>He earned his MBA with a minor in Data Analytics from Texas A&amp;M University–Corpus Christi, and is a Doctor of Business Administration candidate (ABD) at William Howard Taft University. Every factual claim in the book is independently verified against primary sources. He writes from Midland, Texas.</p>
+      <div class="about-creds">
+        <span class="cred">MBA</span>
+        <span class="cred">DBA Candidate (ABD)</span>
+        <span class="cred">Data Analytics</span>
+        <span class="cred">U.S. Army Veteran</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUY -->
+<section id="buy">
+  <div class="divider"><span class="divider-mark">◆</span></div>
+  <div class="buy-inner">
+    <span class="eyebrow">Get the Book</span>
+    <h2 class="display">Read Outcomes Over Processes</h2>
+    <p>Available in hardback, paperback, and ebook. First edition, 2026.</p>
+    <div class="buy-cta-group">
+      <a href="#" data-buy class="btn btn-primary">Buy on Amazon</a>
+      <a href="#" data-buy class="btn btn-ghost">Other Retailers</a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="news-inner">
+    <span class="eyebrow">The Newsletter</span>
+    <h2 class="display">Thinking in outcomes, in your inbox</h2>
+    <p>Join to receive the welcome series and ongoing, evidence-based notes on leading change — case studies, history, and the AI era. New subscribers get a short self-assessment to run on their own team.</p>
+    <form class="subscribe-form" onsubmit="handleSubscribe(event)">
+      <input type="email" name="email_address" placeholder="your@email.com" required aria-label="Email address">
+      <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+    <p class="news-fine">No spam. Unsubscribe anytime. Sent from Sean W. Chambers.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">Outcomes Over Processes</span>
+    <ul class="footer-links">
+      <li><a href="#book">The Book</a></li>
+      <li><a href="#inside">Inside</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#newsletter">Newsletter</a></li>
+      <li><a href="#buy">Buy</a></li>
+    </ul>
+  </div>
+  <div class="footer-copy">© 2026 Sean W. Chambers · Midland, Texas. All rights reserved.</div>
+</footer>
+
+<div id="notify"></div>
+
+<script>
+const nav = document.getElementById("main-nav");
+window.addEventListener("scroll", () => { nav.classList.toggle("solid", window.scrollY > 60); }, { passive: true });
+
+const toggle = document.getElementById("nav-toggle");
+const navLinks = document.getElementById("nav-links");
+toggle.addEventListener("click", () => {
+  const open = navLinks.classList.toggle("open");
+  toggle.setAttribute("aria-expanded", open);
+});
+navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+  navLinks.classList.remove("open");
+  toggle.setAttribute("aria-expanded", false);
+}));
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
+}, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+document.querySelectorAll(".fade-up, .chapter").forEach(el => observer.observe(el));
+
+document.querySelectorAll(".chapters-grid").forEach(grid => {
+  Array.from(grid.children).forEach((child, i) => { child.style.transitionDelay = (i * 0.06) + "s"; });
+});
+
+function showNotify(msg) {
+  const el = document.getElementById("notify");
+  el.textContent = msg;
+  el.classList.add("show");
+  setTimeout(() => el.classList.remove("show"), 3500);
+}
+
+function handleSubscribe(e) {
+  e.preventDefault();
+  const email = e.target.querySelector("input").value;
+  fetch("https://app.kit.com/forms/9544661/subscriptions", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: "email_address=" + encodeURIComponent(email)
+  }).catch(() => {});
+  showNotify("You're in — check your inbox for the welcome email.");
+  e.target.reset();
+}
+
+// Buy buttons are placeholders until retailer links are live
+document.querySelectorAll("[data-buy]").forEach(b => b.addEventListener("click", (e) => {
+  if (b.getAttribute("href") === "#") { e.preventDefault(); showNotify("Purchase links are being finalized — check back soon."); }
+}));
+
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.querySelectorAll(".fade-up, .chapter").forEach(el => el.classList.add("visible"));
+}
+</script>
+</body>
+</html>
